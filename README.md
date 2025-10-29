@@ -11,9 +11,8 @@ A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featur
 
 ## Demo and Downloads
 - Live WebGL Demo”: https://bim-vr-walkthrough.netlify.app
-- Demo video (60–90s): `01_VR_Walkthrough/Demo_Videos/final_tour.mp4`
-- Windows build (zip in Releases): unzip and run `BIM_VR_Walkthrough.exe`
-- WebGL build (optional host): contents of `01_VR_Walkthrough/Builds/WebGL/`
+- Windows build (ZIP): https://github.com/YOUR-USER/bim-vr-walkthrough/releases/download/v1.0.0/YOUR_WINDOWS_ZIP.zip
+- Demo videos (60–90s): https://drive.google.com/drive/folders/1_Cn1NJPH1DRPJr-AKnsSVfuLhjRgYabY?usp=drive_link
 
 ## Controls
 - Movement: `W A S D`
