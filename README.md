@@ -1,4 +1,4 @@
-# BIM VR Walkthrough
+# VR Walkthrough
 
 A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featuring:
 - First-person navigation (WASD + Mouse, Shift to run, Space to jump)
