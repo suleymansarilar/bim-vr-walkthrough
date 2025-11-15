@@ -19,19 +19,23 @@ A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featur
 
 ## Controls
 
-* Movement: `W A S D`
+* Movement: `W A S D` (recently updated from arrow keys)
 * Look: Mouse
 * Run: `Left Shift`
-* Jump: `Space` (in FPS mode)
+* Jump: `Space` (in FPS mode, when not used for task navigation)
 * Guided Tour: `Space` to start
 * Info Panel: `I` toggle
 * Hotspot Detail: `E`
-* Release cursor: `Esc` (in editor)
+* Cursor Lock/Unlock: `Esc` (toggle cursor lock state)
 
 ### Collaborative Tools (New)
 
 * Role Switch: `Tab` (cycles between Site Engineer and Safety Officer)
-* Task Cards: `Space` / `Backspace` (cycles through problem-based learning scenarios)
+* Task Cards: 
+  * `T` - Toggle task card display (show/hide)
+  * `Space` - Next task (cycle through problem-based learning scenarios)
+  * `Backspace` - Previous task
+  * `Q` - Reset current task
 * Place Marker: `E` (drops colored marker at camera target; color matches active role)
 * Route Sketch: `R` (adds waypoint), `C` (clears current route)
 * Session logs are saved automatically to `AppData/LocalLow/<Company>/<Product>/SessionLogs/` as JSON lines
@@ -43,11 +47,12 @@ A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featur
    * `Hotspot.cs`: proximity + E to toggle details  
    * `LookAtCamera.cs`: billboard behavior  
    * `TourController.cs`: guided tour with anti-stuck logic and camera FOV/pitch control  
-   * `SimpleFPSHUD.cs`: FPS overlay
-   * `SessionLogger.cs`: logs all interactions (markers, routes, role changes) to JSON
-   * `CollaborativeSessionManager.cs`: manages roles, tasks, and session state
-   * `CollaborativeMarkerTool.cs`: marker placement with role-based coloring
-   * `RouteSketchTool.cs`: route waypoint system with line rendering
+* `SimpleFPSHUD.cs`: FPS overlay
+* `SessionLogger.cs`: logs all interactions (markers, routes, role changes) to JSON
+* `CollaborativeSessionManager.cs`: manages roles, tasks, and session state
+* `TaskCardUI.cs`: task card display system with T key toggle
+* `CollaborativeMarkerTool.cs`: marker placement with role-based coloring
+* `RouteSketchTool.cs`: route waypoint system with line rendering
 * `Assets/Scenes/`: main scene (e.g., `SampleScene.unity`)
 * `01_VR_Walkthrough/Builds/Windows/`: desktop build
 * `01_VR_Walkthrough/Builds/WebGL/`: WebGL export
