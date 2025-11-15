@@ -56,7 +56,7 @@ public class CollaborativeSessionManager : MonoBehaviour
 
     [Header("Shortcuts")]
     public KeyCode switchRoleKey = KeyCode.Tab;
-    public KeyCode nextTaskKey = KeyCode.Space;
+    public KeyCode nextTaskKey = KeyCode.N;  // Changed from Space to avoid conflict with TourController
     public KeyCode previousTaskKey = KeyCode.Backspace;
 
     private int currentRoleIndex;
@@ -133,15 +133,22 @@ public class CollaborativeSessionManager : MonoBehaviour
 
         if (tasks.Length > 0)
         {
-            // Next task: Space
-            if (Input.GetKeyDown(nextTaskKey) || Input.GetKeyDown(KeyCode.Space))
+            // Check if TourController is running (guided tour active)
+            bool isTourActive = IsTourControllerActive();
+
+            // Only allow task navigation if tour is not active
+            if (!isTourActive)
             {
-                AdvanceTask(1);
-            }
-            // Previous task: Backspace (check both key and KeyCode)
-            else if (Input.GetKeyDown(previousTaskKey) || Input.GetKeyDown(KeyCode.Backspace))
-            {
-                AdvanceTask(-1);
+                // Next task: N key (changed from Space to avoid conflict with TourController)
+                if (Input.GetKeyDown(nextTaskKey) || Input.GetKeyDown(KeyCode.N))
+                {
+                    AdvanceTask(1);
+                }
+                // Previous task: Backspace (check both key and KeyCode)
+                else if (Input.GetKeyDown(previousTaskKey) || Input.GetKeyDown(KeyCode.Backspace))
+                {
+                    AdvanceTask(-1);
+                }
             }
         }
 
@@ -200,7 +207,7 @@ public class CollaborativeSessionManager : MonoBehaviour
 
         if (hintLabel != null)
         {
-            hintLabel.text = $"Tab: Switch Role • Space: Next Task • Backspace: Previous Task • Q: Reset Task";
+            hintLabel.text = $"Tab: Switch Role • N: Next Task • Backspace: Previous Task • Q: Reset Task • Space: Start Tour";
         }
     }
 
@@ -222,6 +229,22 @@ public class CollaborativeSessionManager : MonoBehaviour
 
         logger.LogEvent("session_roles_initialised", "system", string.Join(" | ", roleNames));
         logger.LogEvent("session_tasks_initialised", "system", string.Join(" | ", taskSummaries));
+    }
+
+    private bool IsTourControllerActive()
+    {
+        // Check if TourController exists and is running
+        var tourController = FindObjectOfType<TourController>();
+        if (tourController == null) return false;
+
+        // Use reflection to check if tour is running
+        var runningField = typeof(TourController).GetField("running", 
+            System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        if (runningField != null)
+        {
+            return (bool)runningField.GetValue(tourController);
+        }
+        return false;
     }
 }
 

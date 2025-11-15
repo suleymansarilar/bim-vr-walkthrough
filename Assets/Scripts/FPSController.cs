@@ -103,9 +103,8 @@ public class FPSController : MonoBehaviour
 
             moveDirection = (forward * vertical + right * horizontal) * currentSpeed;
 
-            // Jump with Space (but only if Space is not used for task switching)
-            // Space key is used for task switching, so we'll keep Jump as separate button
-            if (Input.GetButton("Jump") && !Input.GetKeyDown(KeyCode.Space))
+            // Jump with Space (Space is now used for guided tour, so jump only when not in tour)
+            if (Input.GetButton("Jump"))
             {
                 moveDirection.y = jumpSpeed;
             }

@@ -22,8 +22,8 @@ A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featur
 * Movement: `W A S D` (recently updated from arrow keys)
 * Look: Mouse
 * Run: `Left Shift`
-* Jump: `Space` (in FPS mode, when not used for task navigation)
-* Guided Tour: `Space` to start
+* Jump: `Space` (when guided tour is not active)
+* Guided Tour: `Space` to start (automatic walkthrough of the construction site)
 * Info Panel: `I` toggle
 * Hotspot Detail: `E`
 * Cursor Lock/Unlock: `Esc` (toggle cursor lock state)
@@ -33,9 +33,10 @@ A desktop-and-WebGL walkthrough of a BIM model built in Unity (2022 LTS), featur
 * Role Switch: `Tab` (cycles between Site Engineer and Safety Officer)
 * Task Cards: 
   * `T` - Toggle task card display (show/hide)
-  * `Space` - Next task (cycle through problem-based learning scenarios)
+  * `N` - Next task (cycle through problem-based learning scenarios)
   * `Backspace` - Previous task
   * `Q` - Reset current task
+  * Note: Task navigation disabled during guided tour (Space starts tour)
 * Place Marker: `E` (drops colored marker at camera target; color matches active role)
 * Route Sketch: `R` (adds waypoint), `C` (clears current route)
 * Session logs are saved automatically to `AppData/LocalLow/<Company>/<Product>/SessionLogs/` as JSON lines
